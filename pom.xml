@@ -285,6 +285,7 @@
             <excludes>
               <exclude>LICENSE</exclude>
               <exclude>NOTICE</exclude>
+              <exclude>Makefile</exclude>	      
               <exclude>Jenkinsfile</exclude>
               <exclude>**/build/**</exclude>
               <exclude>**/ahc.properties</exclude>

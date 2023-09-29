@@ -1,0 +1,10 @@
+function mvn() {
+    MAVEN_VERSION=3.9.4
+    DOCKER_IMAGE=maven:${MAVEN_VERSION}-eclipse-temurin-20-alpine
+    DOCKER_RUN_OPTS="--rm -it -v /etc/passwd:/etc/passwd:ro -v /etc/group:/etc/group:ro -u $(id -u):$(id -g) -v ${HOME}:${HOME} -v ${PWD}:${PWD} -w ${PWD} -e GITHUB_TOKEN ${DOCKER_RUN_EXTRA_OPTS}"
+    if [ -n "$ZSH_VERSION" ]; then
+        docker run ${=DOCKER_RUN_OPTS} ${DOCKER_IMAGE} mvn "$@"
+    else
+        docker run ${DOCKER_RUN_OPTS} ${DOCKER_IMAGE} mvn "$@"
+    fi    
+}
